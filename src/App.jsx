@@ -1,9 +1,8 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import SingupForm from "./components/SignupForm/SignupForm";
 import ColorPicker from "./components/ColorPicker/ColorPicker";
+import Counter from "./components/Counter/Counter";
 
 const colorPickerOptions = [
   { label: "red", color: "#F44336" },
@@ -18,8 +17,9 @@ function App() {
 
   return (
     <>
-      <SingupForm></SingupForm>
-      <ColorPicker options={colorPickerOptions}></ColorPicker>
+      <SingupForm />
+      <ColorPicker options={colorPickerOptions} />
+      <Counter initialValue={0} />
     </>
   );
 }
