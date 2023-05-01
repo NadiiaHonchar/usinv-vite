@@ -1,12 +1,8 @@
-import { useEffect, useState } from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export default function SingupForm() {
-  const [email, setEmail] = useState(() => {
-    return JSON.parse(window.localStorage.getItem("email")) ?? "";
-  });
-  const [password, setPassword] = useState(() => {
-    return JSON.parse(window.localStorage.getItem("password")) ?? "";
-  });
+  const [email, setEmail] = useLocalStorage("email", "");
+  const [password, setPassword] = useLocalStorage("password", "");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,14 +17,6 @@ export default function SingupForm() {
         return;
     }
   };
-
-  useEffect(() => {
-    window.localStorage.setItem("email", JSON.stringify(email));
-  }, [email]);
-
-  useEffect(() => {
-    window.localStorage.setItem("password", JSON.stringify(password));
-  }, [password]);
 
   return (
     <form autoComplete="off">
