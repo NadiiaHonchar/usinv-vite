@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function SingupForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState(() => {
+    return JSON.parse(window.localStorage.getItem("email")) ?? "";
+  });
+  const [password, setPassword] = useState(() => {
+    return JSON.parse(window.localStorage.getItem("password")) ?? "";
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,6 +21,14 @@ export default function SingupForm() {
         return;
     }
   };
+
+  useEffect(() => {
+    window.localStorage.setItem("email", JSON.stringify(email));
+  }, [email]);
+
+  useEffect(() => {
+    window.localStorage.setItem("password", JSON.stringify(password));
+  }, [password]);
 
   return (
     <form autoComplete="off">
