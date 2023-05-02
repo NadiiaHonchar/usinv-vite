@@ -1,29 +1,30 @@
-import { useEffect, useRef, useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ClockFase } from "./Clock.styled";
 
 export default function Clock() {
   const [time, setTime] = useState(() => new Date());
-  const intervalID = useRef(null);
+  const intervalId = useRef(null);
 
   useEffect(() => {
-    intervalID.current = setInterval(() => {
+    intervalId.current = setInterval(() => {
       setTime(new Date());
-    }, 1000);
+    }, 2000);
+
     return () => {
       stop();
     };
   }, []);
 
   const stop = () => {
-    clearInterval(intervalID.current);
+    clearInterval(intervalId.current);
   };
 
   return (
-    <>
-      <ClockFase>{time.toLocaleTimeString()}</ClockFase>
+    <div>
+      <ClockFase> Current time: {time.toLocaleTimeString()}</ClockFase>
       <button type="button" onClick={stop}>
         Stop
       </button>
-    </>
+    </div>
   );
 }
