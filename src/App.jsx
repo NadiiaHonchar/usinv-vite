@@ -4,6 +4,7 @@ import SingupForm from "./components/SignupForm/SignupForm";
 import ColorPicker from "./components/ColorPicker/ColorPicker";
 import Counter from "./components/Counter/Counter";
 import Clock from "./components/Clock/Clock";
+import PockemonView from "./components/Pockemon/PockemonView/PockemonView";
 
 const colorPickerOptions = [
   { label: "red", color: "#F44336" },
@@ -22,6 +23,7 @@ function App() {
       <SingupForm />
       <ColorPicker options={colorPickerOptions} />
       <Counter initialValue={0} />
+      <PockemonView />
     </>
   );
 }

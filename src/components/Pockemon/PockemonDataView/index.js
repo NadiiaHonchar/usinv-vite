@@ -1,0 +1,1 @@
+export {PockemonDataView} from './PockemonDataView.jsx'
