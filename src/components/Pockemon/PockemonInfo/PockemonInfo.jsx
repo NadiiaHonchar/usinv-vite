@@ -1,8 +1,8 @@
-// import { ComponentPendingView } from "components/ComponentPendigView";
-// import { PockemonErrorView } from "components/PockemonErrorView";
 import { useEffect, useState } from "react";
 import { fetchPockemon } from "../../../services/pockemon-api";
 import { PockemonDataView } from "../PockemonDataView/PockemonDataView";
+import { ComponentPendingView } from "../ComponentPendigView/ComponentPendigView";
+import { PockemonErrorView } from "../PockemonErrorView/PockemonErrorView";
 
 export function PockemonInfo({ pockemonName }) {
   const [pockemon, setPockemon] = useState(null);
@@ -33,9 +33,9 @@ export function PockemonInfo({ pockemonName }) {
     return <ComponentPendingView pockemonName={pockemonName} />;
   }
 
-  // if (status === "rejected") {
-  //   return <PockemonErrorView message={error.message} />;
-  // }
+  if (status === "rejected") {
+    return <PockemonErrorView message={error.message} />;
+  }
   if (status === "resolved") {
     return <PockemonDataView pockemon={pockemon} />;
   }
