@@ -1,4 +1,4 @@
-export const PockemonDataView = ({ pockemon: { sprites, name, stats } }) => {
+export function PockemonDataView({ pockemon: { sprites, name, stats } }) {
   return (
     <div>
       <img
@@ -16,4 +16,4 @@ export const PockemonDataView = ({ pockemon: { sprites, name, stats } }) => {
       </ul>
     </div>
   );
-};
+}
