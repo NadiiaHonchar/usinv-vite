@@ -5,6 +5,7 @@ import ColorPicker from "./components/ColorPicker/ColorPicker";
 import Counter from "./components/Counter/Counter";
 import Clock from "./components/Clock/Clock";
 import PockemonView from "./components/Pockemon/PockemonView/PockemonView";
+import Friends from "./components/Friends/Friends";
 
 const colorPickerOptions = [
   { label: "red", color: "#F44336" },
@@ -24,6 +25,7 @@ function App() {
       <ColorPicker options={colorPickerOptions} />
       <Counter initialValue={0} />
       <PockemonView />
+      <Friends />
     </>
   );
 }
