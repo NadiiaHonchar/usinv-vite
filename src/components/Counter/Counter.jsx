@@ -1,9 +1,21 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import { CounterValue, CounterWrapper } from "./Counter.styled";
 import Controls from "./Controls";
 
+function countReducer(state, action) {
+  switch (action.type) {
+    case "increment":
+      return state + action.payload;
+    case "decrement":
+      return state - action.payload;
+    default:
+      throw new Error()(`Unsupported action type ${action.type}`);
+  }
+}
+
 export default function Counter({ initialValue }) {
-  const [value, setValue] = useState(initialValue);
+  // const [value, setValue] = useState(initialValue);
+  const [count, dispatch] = useReducer(countReducer, initialValue);
 
   // =====================================
   // Пропустити для першого рендера
@@ -16,20 +28,21 @@ export default function Counter({ initialValue }) {
   // });
   // ========================================
 
-  const handleCounterDecrement = () => {
-    setValue((state) => state - 1);
-  };
+  // const handleCounterDecrement = () => {
+  //   setValue((state) => state - 1);
+  // };
 
-  const handleCounterIncrement = () => {
-    setValue((state) => state + 1);
-  };
+  // const handleCounterIncrement = () => {
+  //   setValue((state) => state + 1);
+  // };
 
   return (
     <CounterWrapper>
-      <CounterValue>{value}</CounterValue>
+      <CounterValue>{count}</CounterValue>
       <Controls
-        onIncrement={handleCounterIncrement}
-        onDecrement={handleCounterDecrement}
+        onClick={dispatch}
+        // onIncrement={handleCounterIncrement}
+        // onDecrement={handleCounterDecrement}
       ></Controls>
     </CounterWrapper>
   );
