@@ -1,8 +1,8 @@
-import { ComponentPendingView } from "components/ComponentPendigView";
-import { PockemonDataView } from "components/PockemonDataView";
-import { PockemonErrorView } from "components/PockemonErrorView";
+// import { ComponentPendingView } from "components/ComponentPendigView";
+// import { PockemonDataView } from "components/PockemonDataView";
+// import { PockemonErrorView } from "components/PockemonErrorView";
 import { useEffect, useState } from "react";
-import { fetchPockemon } from "services";
+import { fetchPockemon } from "../../../services/pockemon-api";
 
 export function PockemonInfo({ pockemonName }) {
   const [pockemon, setPockemon] = useState(null);
@@ -10,6 +10,9 @@ export function PockemonInfo({ pockemonName }) {
   const [status, setStatus] = useState("idle");
 
   useEffect(() => {
+    if (!pockemonName) {
+      return;
+    }
     setStatus("pending");
     fetchPockemon(pockemonName)
       .then((pockemon) => {
@@ -26,15 +29,15 @@ export function PockemonInfo({ pockemonName }) {
     return <div>Enter the Pokemon's name</div>;
   }
 
-  if (status === "pending") {
-    return <ComponentPendingView pockemonName={pockemonName} />;
-  }
+  // if (status === "pending") {
+  //   return <ComponentPendingView pockemonName={pockemonName} />;
+  // }
 
-  if (status === "rejected") {
-    return <PockemonErrorView message={error.message} />;
-  }
+  // if (status === "rejected") {
+  //   return <PockemonErrorView message={error.message} />;
+  // }
 
-  if (status === "resolved") {
-    return <PockemonDataView pockemon={pockemon} />;
-  }
+  // if (status === "resolved") {
+  //   return <PockemonDataView pockemon={pockemon} />;
+  // }
 }
