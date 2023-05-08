@@ -7,6 +7,7 @@ import Clock from "./components/Clock/Clock";
 import PockemonView from "./components/Pockemon/PockemonView/PockemonView";
 import Friends from "./components/Friends/Friends";
 import NewsGeneral from "./components/News/NewsGeneral/NewsGeneral";
+import UserMenu from "./components/UserMenu/UserMenu";
 
 const colorPickerOptions = [
   { label: "red", color: "#F44336" },
@@ -28,6 +29,7 @@ function App() {
       <PockemonView />
       <Friends />
       <NewsGeneral />
+      <UserMenu />
     </>
   );
 }

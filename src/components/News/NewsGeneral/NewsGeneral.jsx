@@ -23,16 +23,12 @@ export default function NewsGeneral() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchArticles = () => {
-    return APIFetchArticles({ searchQuery: query, currentPage });
-  };
-
   useEffect(() => {
     if (!query) {
       return;
     }
     setIsLoading(true);
-    fetchArticles({ searchQuery: query })
+    APIFetchArticles({ searchQuery: query, currentPage })
       .then((responseArticles) => {
         setArticles((prevArticles) => [...prevArticles, ...responseArticles]);
         setCurrentPage((prevCurrentPage) => prevCurrentPage + 1);

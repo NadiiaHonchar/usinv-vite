@@ -3,11 +3,10 @@ import authContext from "./Context";
 import avatar from "./avatar.png";
 
 export default function Provider({ children }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({ name: "Avatar", avatar });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   const onLogIn = () => {
-    setUser({ name: "Mango", avatar });
+    setUser({ name: "Avatar", avatar });
     setIsLoggedIn(true);
   };
 
