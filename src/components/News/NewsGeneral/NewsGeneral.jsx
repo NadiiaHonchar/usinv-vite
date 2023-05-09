@@ -5,7 +5,7 @@ import NewsSearchForm from "../NewsSearchForm/NewsSearchForm";
 axios.defaults.headers.common["Authorization"] =
   "Bearer 09d57272085b447b8177e54ca0136b76";
 
-const APIFetchArticles = ({
+const APIfetchArticles = ({
   searchQuery = "",
   currentPage = 1,
   pageSize = 5,
@@ -16,6 +16,7 @@ const APIFetchArticles = ({
     )
     .then((response) => response.data.articles);
 };
+
 export default function NewsGeneral() {
   const [articles, setArticles] = useState([]);
   const [query, setQuery] = useState("");
@@ -27,21 +28,30 @@ export default function NewsGeneral() {
     if (!query) {
       return;
     }
-    setIsLoading(true);
-    APIFetchArticles({ searchQuery: query, currentPage })
-      .then((responseArticles) => {
-        setArticles((prevArticles) => [...prevArticles, ...responseArticles]);
-        setCurrentPage((prevCurrentPage) => prevCurrentPage + 1);
-      })
-      .catch((error) => setError(error.message))
-      .finally(() => setIsLoading(false));
-  }, [query]);
+
+    const fetchArticles = () => {
+      setIsLoading(true);
+
+      APIfetchArticles({ searchQuery: query, currentPage })
+        .then((responseArticles) => {
+          setArticles((prevArticles) => [...prevArticles, ...responseArticles]);
+        })
+        .catch((error) => setError(error.message))
+        .finally(() => setIsLoading(false));
+    };
+
+    fetchArticles();
+  }, [currentPage, query]);
 
   const onChangeQuery = (query) => {
     setQuery(query);
     setCurrentPage(1);
     setArticles([]);
     setError(null);
+  };
+
+  const loadMore = () => {
+    setCurrentPage((prevCurrentPage) => prevCurrentPage + 1);
   };
 
   const shouldRenderLoadMoreButton = articles.length > 0 && !isLoading;
@@ -59,7 +69,7 @@ export default function NewsGeneral() {
         ))}
       </ul>
       {shouldRenderLoadMoreButton && (
-        <button type="button" onClick={() => null}>
+        <button type="button" onClick={loadMore}>
           Load more
         </button>
       )}
