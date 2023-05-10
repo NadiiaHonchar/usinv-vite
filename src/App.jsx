@@ -9,6 +9,9 @@ import Friends from "./components/Friends/Friends";
 import NewsGeneral from "./components/News/NewsGeneral/NewsGeneral";
 import UserMenu from "./components/UserMenu/UserMenu";
 import { NavLink, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Collection from "./pages/Collection";
+import CollectionDetails from "./pages/CollectionDetails";
 
 const colorPickerOptions = [
   { label: "red", color: "#F44336" },
@@ -24,7 +27,9 @@ function App() {
   return (
     <>
       <nav>
-        <NavLink to="/">Clock</NavLink>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/collection">Collection</NavLink>
+        <NavLink to="/clock">Clock</NavLink>
         <NavLink to="/signup">SingupForm</NavLink>
         <NavLink to="/colorpicker">ColorPicker</NavLink>
         <NavLink to="/counter">Counter</NavLink>
@@ -34,7 +39,13 @@ function App() {
         <NavLink to="/user">UserMenu</NavLink>
       </nav>
       <Routes>
-        <Route path="/" element={<Clock />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/collection" element={<Collection />} />
+        <Route
+          path="/collection/:collectionID"
+          element={<CollectionDetails />}
+        />
+        <Route path="/clock" element={<Clock />} />
         <Route path="/signup" element={<SingupForm />} />
         <Route
           path="/colorpicker"
