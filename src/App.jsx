@@ -8,10 +8,11 @@ import PockemonView from "./components/Pockemon/PockemonView/PockemonView";
 import Friends from "./components/Friends/Friends";
 import NewsGeneral from "./components/News/NewsGeneral/NewsGeneral";
 import UserMenu from "./components/UserMenu/UserMenu";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Collection from "./pages/Collection";
 import CollectionDetails from "./pages/CollectionDetails";
+import { Layout } from "./components/Layout";
 
 const colorPickerOptions = [
   { label: "red", color: "#F44336" },
@@ -25,39 +26,27 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <>
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/collection">Collection</NavLink>
-        <NavLink to="/clock">Clock</NavLink>
-        <NavLink to="/signup">SingupForm</NavLink>
-        <NavLink to="/colorpicker">ColorPicker</NavLink>
-        <NavLink to="/counter">Counter</NavLink>
-        <NavLink to="/pockemon">PockemonView</NavLink>
-        <NavLink to="/friends">Friends</NavLink>
-        <NavLink to="/news">NewsGeneral</NavLink>
-        <NavLink to="/user">UserMenu</NavLink>
-      </nav>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/collection" element={<Collection />} />
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="collection" element={<Collection />} />
         <Route
-          path="/collection/:collectionID"
+          path="collection/:collectionID"
           element={<CollectionDetails />}
         />
-        <Route path="/clock" element={<Clock />} />
-        <Route path="/signup" element={<SingupForm />} />
+        <Route path="clock" element={<Clock />} />
+        <Route path="signup" element={<SingupForm />} />
         <Route
-          path="/colorpicker"
+          path="colorpicker"
           element={<ColorPicker options={colorPickerOptions} />}
         />
-        <Route path="/counter" element={<Counter initialValue={0} />} />
-        <Route path="/pockemon" element={<PockemonView />} />
-        <Route path="/friends" element={<Friends />} />
-        <Route path="/news" element={<NewsGeneral />} />
-        <Route path="/user" element={<UserMenu />} />
-      </Routes>
-    </>
+        <Route path="counter" element={<Counter initialValue={0} />} />
+        <Route path="pockemon" element={<PockemonView />} />
+        <Route path="friends" element={<Friends />} />
+        <Route path="news" element={<NewsGeneral />} />
+        <Route path="user" element={<UserMenu />} />
+      </Route>
+    </Routes>
   );
 }
 
