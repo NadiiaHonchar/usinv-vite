@@ -1,18 +1,23 @@
-import { useState } from "react";
-import "./App.css";
-import SingupForm from "./components/SignupForm/SignupForm";
-import ColorPicker from "./components/ColorPicker/ColorPicker";
-import Counter from "./components/Counter/Counter";
-import Clock from "./components/Clock/Clock";
-import PockemonView from "./components/Pockemon/PockemonView/PockemonView";
-import Friends from "./components/Friends/Friends";
-import NewsGeneral from "./components/News/NewsGeneral/NewsGeneral";
-import UserMenu from "./components/UserMenu/UserMenu";
+import { lazy, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import Collection from "./pages/Collection";
-import CollectionDetails from "./pages/CollectionDetails";
+import "./App.css";
+
 import { Layout } from "./components/Layout";
+const Home = lazy(() => import("./pages/Home"));
+const SingupForm = lazy(() => import("./components/SignupForm/SignupForm"));
+const ColorPicker = lazy(() => import("./components/ColorPicker/ColorPicker"));
+const Counter = lazy(() => import("./components/Counter/Counter"));
+const Clock = lazy(() => import("./components/Clock/Clock"));
+const PockemonView = lazy(() =>
+  import("./components/Pockemon/PockemonView/PockemonView")
+);
+const Friends = lazy(() => import("./components/Friends/Friends"));
+const NewsGeneral = lazy(() =>
+  import("./components/News/NewsGeneral/NewsGeneral")
+);
+const UserMenu = lazy(() => import("./components/UserMenu/UserMenu"));
+const Collection = lazy(() => import("./pages/Collection"));
+const CollectionDetails = lazy(() => import("./pages/CollectionDetails"));
 
 const colorPickerOptions = [
   { label: "red", color: "#F44336" },

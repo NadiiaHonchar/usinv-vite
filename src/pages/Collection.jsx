@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, useLocation, useSearchParams } from "react-router-dom";
+import { Suspense, useState } from "react";
+import { Link, Outlet, useLocation, useSearchParams } from "react-router-dom";
 
 const Collection = () => {
   const [item, setItem] = useState(["item-1", "item-2", "item-3", "item-4"]);
@@ -13,18 +13,21 @@ const Collection = () => {
   };
   const visibleItem = item.filter((i) => i.includes(collectionID));
   return (
-    <div>
+    <>
       <input type="text" value={collectionID} onChange={updateQueryString} />
       {visibleItem.map((i) => {
         return (
-          <>
-            <Link key={i} state={{ from: location }} to={`${i}`}>
+          <div key={i}>
+            <Link state={{ from: location }} to={`${i}`}>
               {i}
             </Link>
-          </>
+            <Suspense fallback={<div>Loading...</div>}>
+              <Outlet />
+            </Suspense>
+          </div>
         );
       })}
-    </div>
+    </>
   );
 };
 
