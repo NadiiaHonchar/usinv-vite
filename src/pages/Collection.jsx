@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 
 const Collection = () => {
   const [item, setItem] = useState(["item-1", "item-2", "item-3", "item-4"]);
+  const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const collectionID = searchParams.get("collectionID") ?? "";
   const updateQueryString = (e) => {
@@ -16,9 +17,11 @@ const Collection = () => {
       <input type="text" value={collectionID} onChange={updateQueryString} />
       {visibleItem.map((i) => {
         return (
-          <Link key={i} to={`${i}`}>
-            {i}
-          </Link>
+          <>
+            <Link key={i} state={{ from: location }} to={`${i}`}>
+              {i}
+            </Link>
+          </>
         );
       })}
     </div>
