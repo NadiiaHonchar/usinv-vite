@@ -16,6 +16,7 @@ export const Layout = () => {
           <NavLink to="/friends">Friends</NavLink>
           <NavLink to="/news">NewsGeneral</NavLink>
           <NavLink to="/user">UserMenu</NavLink>
+          <NavLink to="/counter-with-redux">CounterWithRedux</NavLink>
         </nav>
       </header>
       <main>

@@ -18,6 +18,9 @@ const NewsGeneral = lazy(() =>
 const UserMenu = lazy(() => import("./components/UserMenu/UserMenu"));
 const Collection = lazy(() => import("./pages/Collection"));
 const CollectionDetails = lazy(() => import("./pages/CollectionDetails"));
+const CounterWithRedux = lazy(() =>
+  import("./components/CounterWithRedux/CounterWithRedux")
+);
 
 const colorPickerOptions = [
   { label: "red", color: "#F44336" },
@@ -50,6 +53,7 @@ function App() {
         <Route path="friends" element={<Friends />} />
         <Route path="news" element={<NewsGeneral />} />
         <Route path="user" element={<UserMenu />} />
+        <Route path="counter-with-redux" element={<CounterWithRedux />} />
       </Route>
     </Routes>
   );
