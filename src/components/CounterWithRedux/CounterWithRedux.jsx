@@ -6,7 +6,7 @@ const CounterWithRedux = () => {
   const value = useSelector((state) => state.myValue);
   return (
     <div>
-      {value}
+      <div>{value}</div>
       <button onClick={() => dispatch(decrement(1))}>Decrement</button>
       <button onClick={() => dispatch(increment(1))}>Increment</button>
     </div>
