@@ -6,6 +6,7 @@ export const Layout = () => {
     <>
       <header>
         <nav>
+          <NavLink to="/login">LoginPage</NavLink>
           <NavLink to="/">Home</NavLink>
           <NavLink to="/collection">Collection</NavLink>
           <NavLink to="/clock">Clock</NavLink>

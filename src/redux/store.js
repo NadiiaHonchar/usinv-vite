@@ -1,4 +1,5 @@
 import { configureStore, createAction, createReducer } from "@reduxjs/toolkit";
+import { authSlice } from "./authSlice";
 
 export const increment = createAction("myValue/increment");
 export const decrement = createAction("myValue/decrement");
@@ -8,5 +9,8 @@ const myReducer = createReducer(0, {
 });
 
 export const store = configureStore({
-  reducer: { myValue: myReducer },
+  reducer: {
+    myValue: myReducer,
+    user: authSlice.reducer,
+  },
 });
