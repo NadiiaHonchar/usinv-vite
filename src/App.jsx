@@ -3,7 +3,10 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
 import { Layout } from "./components/Layout";
-const LoginPage = lazy(() => import('./pages/LoginPage'));
+const LoginPage = lazy(() => import("./pages/LoginPage"));
+const GlobalUserMenu = lazy(() =>
+  import("./components/GlobalUserMenu/GlobalUserMenu")
+);
 const Home = lazy(() => import("./pages/Home"));
 const SingupForm = lazy(() => import("./components/SignupForm/SignupForm"));
 const ColorPicker = lazy(() => import("./components/ColorPicker/ColorPicker"));
@@ -38,6 +41,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route path="login" element={<LoginPage />} />
+        <Route path="global-user-menu" element={<GlobalUserMenu />} />
         <Route index element={<Home />} />
         <Route path="collection" element={<Collection />} />
         <Route
