@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { useLogOutRedirect } from "../../hooks/useLogOutRedirect";
 
 const initalFriends = [
   "Kolby Thompson",
@@ -104,6 +105,7 @@ const initalFriends = [
 ];
 
 export default function Friends() {
+  useLogOutRedirect();
   const [count, setCount] = useState(0);
   const [friends] = useState(initalFriends);
   const [filter, setFilter] = useState("");

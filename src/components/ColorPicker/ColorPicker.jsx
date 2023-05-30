@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useLogOutRedirect } from "../../hooks/useLogOutRedirect";
 
 export default function ColorPicker({ options }) {
+  useLogOutRedirect();
   const [activeOptionsIndex, setActiveOptionsIndex] = useState(0);
 
   const { label } = options[activeOptionsIndex];

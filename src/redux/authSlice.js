@@ -20,6 +20,5 @@ export const authSlice = createSlice({
     },
   },
 });
-console.log(authSlice);
 
 export const { logIn, logOut } = authSlice.actions;

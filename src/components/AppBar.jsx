@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 
 export const AppBar = () => {
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
-  console.log(isLoggedIn);
   return (
     <header
       style={{ padding: 8, borderBottom: "1px solid black", marginBottom: 12 }}

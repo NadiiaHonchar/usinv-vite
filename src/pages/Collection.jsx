@@ -1,7 +1,9 @@
 import { Suspense, useState } from "react";
 import { Link, Outlet, useLocation, useSearchParams } from "react-router-dom";
+import { useLogOutRedirect } from "../hooks/useLogOutRedirect";
 
 const Collection = () => {
+  useLogOutRedirect();
   const [item, setItem] = useState(["item-1", "item-2", "item-3", "item-4"]);
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();

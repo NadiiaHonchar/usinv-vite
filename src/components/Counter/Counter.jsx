@@ -1,8 +1,10 @@
 import { useEffect, useReducer, useRef, useState } from "react";
 import { CounterValue, CounterWrapper } from "./Counter.styled";
 import Controls from "./Controls";
+import { useLogOutRedirect } from "../../hooks/useLogOutRedirect";
 
 function countReducer(state, action) {
+  useLogOutRedirect();
   switch (action.type) {
     case "increment":
       return state + action.payload;

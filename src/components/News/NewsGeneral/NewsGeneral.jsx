@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import NewsSearchForm from "../NewsSearchForm/NewsSearchForm";
+import { useLogOutRedirect } from "../../../hooks/useLogOutRedirect";
 
 axios.defaults.headers.common["Authorization"] =
   "Bearer 09d57272085b447b8177e54ca0136b76";
@@ -18,6 +19,7 @@ const APIfetchArticles = ({
 };
 
 export default function NewsGeneral() {
+  useLogOutRedirect();
   const [articles, setArticles] = useState([]);
   const [query, setQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);

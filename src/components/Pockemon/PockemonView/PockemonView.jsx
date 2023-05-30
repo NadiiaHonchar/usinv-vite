@@ -3,8 +3,10 @@ import { PockemonForm } from "../PockemonForm/PockemonForm";
 import { PockemonInfo } from "../PockemonInfo/PockemonInfo";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useLogOutRedirect } from "../../../hooks/useLogOutRedirect";
 
 export default function PockemonView() {
+  useLogOutRedirect();
   const [pockemonName, setPockemonName] = useState("");
 
   return (

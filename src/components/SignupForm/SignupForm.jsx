@@ -1,6 +1,8 @@
-import useLocalStorage from "../hooks/useLocalStorage";
+import useLocalStorage from "../../hooks/useLocalStorage";
+import { useLogOutRedirect } from "../../hooks/useLogOutRedirect";
 
 export default function SingupForm() {
+  useLogOutRedirect();
   const [email, setEmail] = useLocalStorage("email", "");
   const [password, setPassword] = useLocalStorage("password", "");
 

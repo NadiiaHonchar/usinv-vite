@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
+import { useLogOutRedirect } from "../hooks/useLogOutRedirect";
 
 const CollectionDetails = () => {
   const location = useLocation();
