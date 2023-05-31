@@ -4,10 +4,11 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import App from "./App.jsx";
 import AuthProvider from "./components/context/auth/Provider.jsx";
-import { store } from "./redux/store.js";
+import { store, persistor } from "./redux/store.js";
 import "./index.css";
 import { theme } from "./components/styles/theme.js";
 import { ThemeProvider } from "@emotion/react";
+import { PersistGate } from "redux-persist/integration/react";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -15,7 +16,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <AuthProvider>
         <BrowserRouter>
           <Provider store={store}>
-            <App />
+            <PersistGate loading={null} persistor={persistor}>
+              <App />
+            </PersistGate>
           </Provider>
         </BrowserRouter>
       </AuthProvider>
