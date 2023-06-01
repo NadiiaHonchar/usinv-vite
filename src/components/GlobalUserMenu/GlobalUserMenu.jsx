@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { logOut } from "../../redux/authSlice";
+import { getLogin, logOut } from "../../redux/authSlice";
 import { useLogOutRedirect } from "../../hooks/useLogOutRedirect";
 
 const GlobalUserMenu = () => {
   useLogOutRedirect();
-  const login = useSelector((state) => state.user);
+  const login = useSelector(getLogin);
   const dispatch = useDispatch();
   return (
     <div>
