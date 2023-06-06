@@ -21,6 +21,7 @@ export const store = configureStore({
   reducer: {
     myValue: myReducer,
     user: authReducer,
+    news: (state = []) => state,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
