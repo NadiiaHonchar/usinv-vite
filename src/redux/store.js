@@ -10,6 +10,8 @@ import {
   REGISTER,
 } from "redux-persist";
 
+import newsReducer from "./news/newsReducer";
+
 export const increment = createAction("myValue/increment");
 export const decrement = createAction("myValue/decrement");
 const myReducer = createReducer(0, {
@@ -21,7 +23,7 @@ export const store = configureStore({
   reducer: {
     myValue: myReducer,
     user: authReducer,
-    news: (state = []) => state,
+    news: newsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
