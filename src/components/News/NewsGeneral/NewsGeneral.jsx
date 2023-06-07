@@ -7,11 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function NewsGeneral() {
   useLogOutRedirect();
-  // const [articles, setArticles] = useState([]);
   const [query, setQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [error, setError] = useState(null);
   const articles = useSelector((state) => state.news.entities);
   const isLoading = useSelector((state) => state.news.isLoading);
   const error = useSelector((state) => state.news.error);
@@ -22,28 +19,12 @@ export default function NewsGeneral() {
     if (!query) {
       return;
     }
-
     dispatch(newsOperations.fetchNews(query, currentPage));
-
-    // const fetchArticles = () => {
-    //   setIsLoading(true);
-
-    //   APIfetchArticles({ searchQuery: query, currentPage })
-    //     .then((responseArticles) => {
-    //       setArticles((prevArticles) => [...prevArticles, ...responseArticles]);
-    //     })
-    //     .catch((error) => setError(error.message))
-    //     .finally(() => setIsLoading(false));
-    // };
-
-    // fetchArticles();
   }, [currentPage, query, dispatch]);
 
   const onChangeQuery = (query) => {
     setQuery(query);
     setCurrentPage(1);
-    // setArticles([]);
-    // setError(null);
   };
 
   const loadMore = () => {
