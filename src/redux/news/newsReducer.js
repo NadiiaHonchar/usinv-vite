@@ -34,7 +34,6 @@ const isLoading = createReducer(false, {
 const error = createReducer(null, {
   [fetchNews.rejected]: (_, actions) => {
     actions.payload;
-    console.log("actions", actions.payload);
   },
   [fetchNews.pending]: () => null,
 });

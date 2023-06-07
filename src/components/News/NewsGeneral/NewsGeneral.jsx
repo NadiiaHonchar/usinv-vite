@@ -19,7 +19,9 @@ export default function NewsGeneral() {
     if (!query) {
       return;
     }
-    dispatch(newsOperations.fetchNews(query, currentPage));
+    // without Acync Thunk
+    // dispatch(newsOperations.fetchNews(query, currentPage));
+    dispatch(newsOperations.fetchNews({ query, currentPage }));
   }, [currentPage, query, dispatch]);
 
   const onChangeQuery = (query) => {

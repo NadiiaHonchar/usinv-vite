@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { APIfetchArticles } from "../../services/news-api";
-import * as newsActions from "./newsActions";
+// import * as newsActions from "./newsActions";
 
 // Without AsyncThunk
 // export const fetchNews = (query, currentPage) => async (dispatch) => {
@@ -15,7 +15,7 @@ import * as newsActions from "./newsActions";
 
 export const fetchNews = createAsyncThunk(
   "news/fetchNews",
-  async (query, currentPage) => {
+  async ({ query, currentPage }) => {
     const news = await APIfetchArticles({ searchQuery: query, currentPage });
     return news;
   }
