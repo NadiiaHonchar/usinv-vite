@@ -12,7 +12,10 @@ const isLoading = createReducer(false, {
 });
 
 const error = createReducer(null, {
-  [newsActions.fetchNewsError]: (_, actions) => actions.payload,
+  [newsActions.fetchNewsError]: (_, actions) => {
+    actions.payload;
+    console.log("actions", actions.payload);
+  },
   [newsActions.fetchNewsRequest]: () => null,
 });
 export default combineReducers({

@@ -1,40 +1,49 @@
 import { useEffect, useState } from "react";
 import NewsSearchForm from "../NewsSearchForm/NewsSearchForm";
 import { useLogOutRedirect } from "../../../hooks/useLogOutRedirect";
-import { APIfetchArticles } from "../../../services/news-api";
+// import { APIfetchArticles } from "../../../services/news-api";
+import * as newsOperations from "../../../redux/news/newsOperations";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function NewsGeneral() {
   useLogOutRedirect();
-  const [articles, setArticles] = useState([]);
+  // const [articles, setArticles] = useState([]);
   const [query, setQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState(null);
+  const articles = useSelector((state) => state.news.entities);
+  const isLoading = useSelector((state) => state.news.isLoading);
+  const error = useSelector((state) => state.news.error);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!query) {
       return;
     }
 
-    const fetchArticles = () => {
-      setIsLoading(true);
+    dispatch(newsOperations.fetchNews(query, currentPage));
 
-      APIfetchArticles({ searchQuery: query, currentPage })
-        .then((responseArticles) => {
-          setArticles((prevArticles) => [...prevArticles, ...responseArticles]);
-        })
-        .catch((error) => setError(error.message))
-        .finally(() => setIsLoading(false));
-    };
+    // const fetchArticles = () => {
+    //   setIsLoading(true);
 
-    fetchArticles();
-  }, [currentPage, query]);
+    //   APIfetchArticles({ searchQuery: query, currentPage })
+    //     .then((responseArticles) => {
+    //       setArticles((prevArticles) => [...prevArticles, ...responseArticles]);
+    //     })
+    //     .catch((error) => setError(error.message))
+    //     .finally(() => setIsLoading(false));
+    // };
+
+    // fetchArticles();
+  }, [currentPage, query, dispatch]);
 
   const onChangeQuery = (query) => {
     setQuery(query);
     setCurrentPage(1);
-    setArticles([]);
-    setError(null);
+    // setArticles([]);
+    // setError(null);
   };
 
   const loadMore = () => {

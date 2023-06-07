@@ -10,7 +10,7 @@ export const APIfetchArticles = ({
 } = {}) => {
   return axios
     .get(
-      `https://newsapi.org/v2/everything?q=${searchQuery}&pageSize=${pageSize}&page=${currentPage}`
+      `https://newsapi.org/v2/everything?q='${searchQuery}'&pageSize=${pageSize}&page=${currentPage}`
     )
     .then((response) => response.data.articles);
 };
