@@ -11,6 +11,7 @@ import {
 } from "redux-persist";
 
 import newsReducer from "./news/newsReducer";
+import { pokemonApi } from "./pockemon/pockemon";
 
 export const increment = createAction("myValue/increment");
 export const decrement = createAction("myValue/decrement");
@@ -24,13 +25,16 @@ export const store = configureStore({
     myValue: myReducer,
     user: authReducer,
     news: newsReducer,
+    [pokemonApi.reducerPath]: pokemonApi.reducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
+  middleware: (getDefaultMiddleware) => [
+    ...getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
+    pokemonApi.middleware,
+  ],
 });
 
 export const persistor = persistStore(store);
