@@ -4,12 +4,13 @@ import { useLogOutRedirect } from "../../../hooks/useLogOutRedirect";
 // import { APIfetchArticles } from "../../../services/news-api";
 import * as newsOperations from "../../../redux/news/newsOperations";
 import { useDispatch, useSelector } from "react-redux";
+import { getNews } from "../../../redux/news/newsSelectors";
 
 export default function NewsGeneral() {
   useLogOutRedirect();
   const [query, setQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const articles = useSelector((state) => state.news.entities);
+  const articles = useSelector(getNews);
   const isLoading = useSelector((state) => state.news.isLoading);
   const error = useSelector((state) => state.news.error);
 
